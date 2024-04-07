@@ -20,7 +20,7 @@ export const LearnCharacterStepContent = ({
                 <p>{step.description}</p>
             </div>
             <div className="flex justify-end mt-4">
-                <Button onClick={onStepComplete}>Next</Button>
+                <Button type="submit">Next</Button>
             </div>
         </div>
     )

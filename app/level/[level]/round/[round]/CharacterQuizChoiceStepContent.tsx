@@ -9,7 +9,6 @@ type CharacterQuizChoiceStepContentProps = {
 
 export const CharacterQuizChoiceStepContent = ({
     step,
-    onStepComplete,
 }: CharacterQuizChoiceStepContentProps) => {
     const [selectedChoice, setSelectedChoice] = useState<string | null>(null)
 
@@ -33,9 +32,7 @@ export const CharacterQuizChoiceStepContent = ({
             {selectedChoice && (
                 <div>
                     {selectedChoice === step.correctChoice ? (
-                        <Button onClick={onStepComplete}>
-                            Correct! Go Next
-                        </Button>
+                        <Button type="submit">Correct! Go Next</Button>
                     ) : (
                         <p>Try again!</p>
                     )}

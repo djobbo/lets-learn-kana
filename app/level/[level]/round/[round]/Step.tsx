@@ -29,8 +29,11 @@ export const StepContent = ({ step, ...baseProps }: StepProps) => {
 
 export const Step = (props: StepProps) => {
     return (
-        <div className="max-w-lg p-8 border rounded-lg mx-auto shadow-sm">
+        <form
+            className="max-w-lg p-8 border rounded-lg mx-auto shadow-sm"
+            onSubmit={() => props.onStepComplete?.()}
+        >
             <StepContent {...props} />
-        </div>
+        </form>
     )
 }

@@ -6,16 +6,13 @@ type InfoStepContentProps = {
     step: InfoStep
 } & BaseStepProps
 
-export const InfoStepContent = ({
-    step,
-    onStepComplete,
-}: InfoStepContentProps) => {
+export const InfoStepContent = ({ step }: InfoStepContentProps) => {
     return (
         <div>
             <h2 className="text-xl font-bold">{step.title}</h2>
             <p className="mt-2">{step.description}</p>
             <div className="flex justify-end mt-4">
-                <Button onClick={onStepComplete}>Next</Button>
+                <Button type="submit">Next</Button>
             </div>
         </div>
     )

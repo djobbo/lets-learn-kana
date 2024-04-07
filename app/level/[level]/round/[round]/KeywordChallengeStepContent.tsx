@@ -33,7 +33,6 @@ const checkAnswer = (
 // TODO: case when the input is shorter than the answer
 export const KeywordChallengeStepContent = ({
     step,
-    onStepComplete,
 }: KeywordChallengeStepContentProps) => {
     const [inputValue, setInputValue] = useState<string>("")
     const [hasAnswered, setHasAnswered] = useState<boolean>(false)
@@ -68,7 +67,7 @@ export const KeywordChallengeStepContent = ({
             </div>
             {isReadyToGoNext ? (
                 <div>
-                    <Button onClick={onStepComplete}>Correct! Go Next</Button>
+                    <Button type="submit">Correct! Go Next</Button>
                 </div>
             ) : (
                 <button
