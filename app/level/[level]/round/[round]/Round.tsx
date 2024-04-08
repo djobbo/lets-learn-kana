@@ -17,6 +17,7 @@ export const Round = ({ round }: RoundProps) => {
             <p>{round.description}</p>
             <Step
                 key={currentStepIndex}
+                round={round}
                 step={round.steps[currentStepIndex]}
                 onStepComplete={
                     currentStepIndex < round.steps.length - 1

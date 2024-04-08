@@ -42,7 +42,7 @@ export const KeywordChallengeStepContent = ({
     const isReadyToGoNext = hasAnswered && errorIndex === -1
 
     return (
-        <div>
+        <div className="flex flex-col gap-2">
             <h2>{step.keyword}</h2>
             <div className="relative">
                 <input
@@ -66,11 +66,10 @@ export const KeywordChallengeStepContent = ({
                 )}
             </div>
             {isReadyToGoNext ? (
-                <div>
-                    <Button type="submit">Correct! Go Next</Button>
-                </div>
+                <Button type="submit">Correct! Go Next</Button>
             ) : (
                 <button
+                    type="button"
                     onClick={() => {
                         const errorIndex = checkAnswer(
                             inputValue,

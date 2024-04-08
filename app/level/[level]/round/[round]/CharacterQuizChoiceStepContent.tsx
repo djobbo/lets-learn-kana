@@ -13,12 +13,13 @@ export const CharacterQuizChoiceStepContent = ({
     const [selectedChoice, setSelectedChoice] = useState<string | null>(null)
 
     return (
-        <div>
+        <div className="flex flex-col gap-2">
             <h2>{step.character}</h2>
             <ul className="flex p-4 gap-2">
                 {step.choices.map((choice, choiceIndex) => (
                     <li key={choiceIndex}>
                         <button
+                            type="button"
                             className="rounded-full bg-blue-500 text-white w-12 h-12"
                             onClick={() => {
                                 setSelectedChoice(choice)

@@ -8,12 +8,10 @@ type InfoStepContentProps = {
 
 export const InfoStepContent = ({ step }: InfoStepContentProps) => {
     return (
-        <div>
+        <div className="flex flex-col gap-2">
             <h2 className="text-xl font-bold">{step.title}</h2>
             <p className="mt-2">{step.description}</p>
-            <div className="flex justify-end mt-4">
-                <Button type="submit">Next</Button>
-            </div>
+            <Button type="submit">Next</Button>
         </div>
     )
 }

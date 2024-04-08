@@ -4,9 +4,11 @@ type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement>
 
 export const Button = ({ className, ...props }: ButtonProps) => {
     return (
-        <button
-            className={`px-3 py-1 bg-blue-500 hover:bg-blue-400 rounded-sm shadow-md text-white ${className}`}
-            {...props}
-        />
+        <div className="bg-primary mt-4 rounded-lg flex items-center pb-1">
+            <button
+                className={`flex-1 bg-primaryLight hover:bg-primary text-white rounded-lg p-2 text-bg ${className}`}
+                {...props}
+            />
+        </div>
     )
 }

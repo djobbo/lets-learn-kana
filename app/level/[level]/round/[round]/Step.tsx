@@ -1,4 +1,4 @@
-import { type Step as StepType } from "@/data/levels"
+import { Round as RoundType, type Step as StepType } from "@/data/levels"
 import { LearnCharacterStepContent } from "./LearnCharacterStepContent"
 import { InfoStepContent } from "./InfoStepContent"
 import { CharacterQuizChoiceStepContent } from "./CharacterQuizChoiceStepContent"
@@ -6,6 +6,7 @@ import { KeywordChallengeStepContent } from "./KeywordChallengeStepContent"
 
 export type BaseStepProps = {
     onStepComplete?: () => void
+    round: RoundType
 }
 
 type StepProps = {
@@ -28,12 +29,17 @@ export const StepContent = ({ step, ...baseProps }: StepProps) => {
 }
 
 export const Step = (props: StepProps) => {
+    const { round } = props
+
     return (
         <form
-            className="max-w-lg p-8 border rounded-lg mx-auto shadow-sm"
+            className="max-w-lg p-8 mx-auto"
             onSubmit={() => props.onStepComplete?.()}
         >
-            <StepContent {...props} />
+            <h1 className="text-center text-lg font-bold">{round.title}</h1>
+            <div className="flex flex-col shadow-sm p-4 rounded-lg bg-card mt-2">
+                <StepContent {...props} />
+            </div>
         </form>
     )
 }
