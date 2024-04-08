@@ -1,6 +1,7 @@
 import { type LearnCharacterStep } from "@/data/levels"
 import { BaseStepProps } from "./Step"
 import { Button } from "@/components/Button"
+import { CharacterDisplay } from "@/components/CharacterDisplay"
 
 type LearnCharacterStepContentProps = {
     step: LearnCharacterStep
@@ -11,14 +12,12 @@ export const LearnCharacterStepContent = ({
     onStepComplete,
 }: LearnCharacterStepContentProps) => {
     return (
-        <div className="flex flex-col gap-2">
-            <h1 className="text-8xl">{step.character}</h1>
-            <div className="flex items-center gap-2 mt-4">
-                <p className="shrink-0 w-10 h-10 text-xl text-white bg-blue-400 flex items-center justify-center rounded-full">
-                    {step.pronounciation}
-                </p>
-                <p>{step.description}</p>
-            </div>
+        <div className="flex flex-col gap-4 mt-8">
+            <CharacterDisplay
+                character={step.character}
+                pronounciation={step.pronounciation}
+            />
+            <p className="text-textSecondary">{step.description}</p>
             <Button type="submit">Next</Button>
         </div>
     )

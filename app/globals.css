@@ -5,3 +5,10 @@
 html, body {
     @apply bg-bg text-text;
 }
+
+@layer components {
+    .svg-stroke-dashed {
+        stroke-dasharray: 6;
+        stroke-dashoffset: 3;
+    }
+}

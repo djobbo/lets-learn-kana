@@ -13,8 +13,9 @@ export const Round = ({ round }: RoundProps) => {
 
     return (
         <div>
-            <h1>{round.title}</h1>
-            <p>{round.description}</p>
+            <h1 className="mt-8 text-center text-xl font-semibold">
+                {round.title}
+            </h1>
             <Step
                 key={currentStepIndex}
                 round={round}

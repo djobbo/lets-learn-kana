@@ -29,17 +29,9 @@ export const StepContent = ({ step, ...baseProps }: StepProps) => {
 }
 
 export const Step = (props: StepProps) => {
-    const { round } = props
-
     return (
-        <form
-            className="max-w-lg p-8 mx-auto"
-            onSubmit={() => props.onStepComplete?.()}
-        >
-            <h1 className="text-center text-lg font-bold">{round.title}</h1>
-            <div className="flex flex-col shadow-sm p-4 rounded-lg bg-card mt-2">
-                <StepContent {...props} />
-            </div>
+        <form onSubmit={() => props.onStepComplete?.()}>
+            <StepContent {...props} />
         </form>
     )
 }

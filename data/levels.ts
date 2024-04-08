@@ -33,7 +33,6 @@ export type Step =
 export type Round = {
     id: string
     title: string
-    description: string
     steps: Step[]
 }
 
@@ -48,12 +47,11 @@ export const levels: Level[] = [
     {
         id: "hiragana-1",
         title: "Hiragana 1",
-        description: "Learn the first set of hiragana characters.",
+        description: "The journey begins...",
         rounds: [
             {
                 id: "round-1",
-                title: "Round 1",
-                description: "Learn the first set of hiragana characters.",
+                title: "First steps into the world of hiragana.",
                 steps: [
                     {
                         type: "info",
@@ -96,8 +94,7 @@ export const levels: Level[] = [
             },
             {
                 id: "round-2",
-                title: "Round 2",
-                description: "Learn the second set of hiragana characters.",
+                title: "Learn the second set of hiragana characters.",
                 steps: [
                     {
                         type: "info",

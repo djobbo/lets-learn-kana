@@ -2,6 +2,7 @@ import { type CharacterQuizChoiceStep } from "@/data/levels"
 import { BaseStepProps } from "./Step"
 import { useState } from "react"
 import { Button } from "@/components/Button"
+import { CharacterDisplay } from "@/components/CharacterDisplay"
 
 type CharacterQuizChoiceStepContentProps = {
     step: CharacterQuizChoiceStep
@@ -13,23 +14,22 @@ export const CharacterQuizChoiceStepContent = ({
     const [selectedChoice, setSelectedChoice] = useState<string | null>(null)
 
     return (
-        <div className="flex flex-col gap-2">
-            <h2>{step.character}</h2>
-            <ul className="flex p-4 gap-2">
+        <div className="flex flex-col mt-8">
+            <CharacterDisplay character={step.character} />
+            <div className="flex justify-between p-4 gap-2">
                 {step.choices.map((choice, choiceIndex) => (
-                    <li key={choiceIndex}>
-                        <button
-                            type="button"
-                            className="rounded-full bg-blue-500 text-white w-12 h-12"
-                            onClick={() => {
-                                setSelectedChoice(choice)
-                            }}
-                        >
-                            {choice}
-                        </button>
-                    </li>
+                    <Button
+                        key={choiceIndex}
+                        type="button"
+                        className="w-16"
+                        onClick={() => {
+                            setSelectedChoice(choice)
+                        }}
+                    >
+                        {choice}
+                    </Button>
                 ))}
-            </ul>
+            </div>
             {selectedChoice && (
                 <div>
                     {selectedChoice === step.correctChoice ? (
