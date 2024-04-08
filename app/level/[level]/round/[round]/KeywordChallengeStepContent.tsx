@@ -58,7 +58,7 @@ export const KeywordChallengeStepContent = ({
                 {hasAnswered && errorIndex !== -1 && (
                     <p className="absolute top-0 pointer-events-none p-2">
                         {inputValue.slice(0, errorIndex)}
-                        <span className="text-red-500">
+                        <span className="text-accent">
                             {inputValue[errorIndex]}
                         </span>
                         {inputValue.slice(errorIndex + 1)}
