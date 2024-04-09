@@ -1,12 +1,11 @@
 import { type KeywordChallengeStep } from "@/data/levels"
-import { BaseStepProps } from "./Step"
 import { useMemo, useState } from "react"
 import { Button } from "@/components/Button"
 import { checkKeyword } from "@/util/checkKeyword"
 
 type KeywordChallengeStepContentProps = {
     step: KeywordChallengeStep
-} & BaseStepProps
+}
 
 export const KeywordChallengeStepContent = ({
     step,

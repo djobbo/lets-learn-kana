@@ -1,12 +1,12 @@
 import { type CharacterQuizChoiceStep } from "@/data/levels"
-import { BaseStepProps } from "./Step"
 import { useState } from "react"
 import { Button } from "@/components/Button"
 import { CharacterDisplay } from "@/components/CharacterDisplay"
+import { useLevelStore } from "./LevelStoreProvider"
 
 type CharacterQuizChoiceStepContentProps = {
     step: CharacterQuizChoiceStep
-} & BaseStepProps
+}
 
 const Answer = {
     None: "None",
@@ -18,8 +18,8 @@ type Choice = (typeof Answer)[keyof typeof Answer]
 
 export const CharacterQuizChoiceStepContent = ({
     step,
-    onStepComplete,
 }: CharacterQuizChoiceStepContentProps) => {
+    const { nextStep } = useLevelStore()
     const [answer, setAnswer] = useState<Choice>(Answer.None)
 
     const handleSubmit = (choice: string) => {
@@ -29,7 +29,7 @@ export const CharacterQuizChoiceStepContent = ({
         if (isCorrect) {
             setTimeout(() => {
                 setAnswer(Answer.None)
-                onStepComplete?.()
+                nextStep()
             }, 500)
         }
     }

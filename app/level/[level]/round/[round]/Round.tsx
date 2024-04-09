@@ -1,31 +1,18 @@
 "use client"
 
-import { type Round as RoundType } from "@/data/levels"
+import { useLevelStore } from "./LevelStoreProvider"
+import { observer } from "mobx-react-lite"
 import { Step } from "./Step"
-import { useState } from "react"
 
-type RoundProps = {
-    round: RoundType
-}
-
-export const Round = ({ round }: RoundProps) => {
-    const [currentStepIndex, setCurrentStepIndex] = useState(0)
+export const Round = observer(function Round() {
+    const { round, stepIndex } = useLevelStore()
 
     return (
         <div>
             <h1 className="mt-8 text-center text-xl font-semibold">
                 {round.title}
             </h1>
-            <Step
-                key={currentStepIndex}
-                round={round}
-                step={round.steps[currentStepIndex]}
-                onStepComplete={
-                    currentStepIndex < round.steps.length - 1
-                        ? () => setCurrentStepIndex(currentStepIndex + 1)
-                        : undefined
-                }
-            />
+            <Step key={stepIndex} />
         </div>
     )
-}
+})

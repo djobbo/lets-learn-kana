@@ -1,10 +1,9 @@
 import { type InfoStep } from "@/data/levels"
-import { BaseStepProps } from "./Step"
 import { Button } from "@/components/Button"
 
 type InfoStepContentProps = {
     step: InfoStep
-} & BaseStepProps
+}
 
 export const InfoStepContent = ({ step }: InfoStepContentProps) => {
     return (

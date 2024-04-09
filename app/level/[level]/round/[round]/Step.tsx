@@ -1,37 +1,33 @@
-import { Round as RoundType, type Step as StepType } from "@/data/levels"
 import { LearnCharacterStepContent } from "./LearnCharacterStepContent"
 import { InfoStepContent } from "./InfoStepContent"
 import { CharacterQuizChoiceStepContent } from "./CharacterQuizChoiceStepContent"
 import { KeywordChallengeStepContent } from "./KeywordChallengeStepContent"
+import { observer } from "mobx-react-lite"
+import { useLevelStore } from "./LevelStoreProvider"
 
-export type BaseStepProps = {
-    onStepComplete?: () => void
-    round: RoundType
-}
+export const StepContent = observer(function StepContent() {
+    const { step } = useLevelStore()
 
-type StepProps = {
-    step: StepType
-} & BaseStepProps
-
-export const StepContent = ({ step, ...baseProps }: StepProps) => {
     switch (step.type) {
         case "info":
-            return <InfoStepContent step={step} {...baseProps} />
+            return <InfoStepContent step={step} />
         case "kana_learn":
-            return <LearnCharacterStepContent step={step} {...baseProps} />
+            return <LearnCharacterStepContent step={step} />
         case "kana_quiz_choice":
-            return <CharacterQuizChoiceStepContent step={step} {...baseProps} />
+            return <CharacterQuizChoiceStepContent step={step} />
         case "keyword_challenge":
-            return <KeywordChallengeStepContent step={step} {...baseProps} />
+            return <KeywordChallengeStepContent step={step} />
         default:
             return null
     }
-}
+})
 
-export const Step = (props: StepProps) => {
+export const Step = () => {
+    const { nextStep } = useLevelStore()
+
     return (
-        <form onSubmit={() => props.onStepComplete?.()}>
-            <StepContent {...props} />
+        <form onSubmit={() => nextStep()}>
+            <StepContent />
         </form>
     )
 }
