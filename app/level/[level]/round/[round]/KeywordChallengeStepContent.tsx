@@ -2,39 +2,11 @@ import { type KeywordChallengeStep } from "@/data/levels"
 import { BaseStepProps } from "./Step"
 import { useMemo, useState } from "react"
 import { Button } from "@/components/Button"
+import { checkKeyword } from "@/util/checkKeyword"
 
 type KeywordChallengeStepContentProps = {
     step: KeywordChallengeStep
 } & BaseStepProps
-
-// TODO: add tests
-const checkAnswer = (
-    inputValue: string,
-    pronounciation: string[][],
-): number => {
-    let checkIndex = 0
-    for (let i = 0; i < pronounciation.length; i++) {
-        for (let j = 0; j < pronounciation[i].length; j++) {
-            const rest = inputValue.slice(checkIndex)
-
-            if (rest.length === 0) {
-                return checkIndex
-            }
-
-            if (!rest.startsWith(pronounciation[i][j])) {
-                return checkIndex
-            }
-
-            checkIndex += pronounciation[i][j].length
-        }
-    }
-
-    if (checkIndex === inputValue.length) {
-        return -1
-    }
-
-    return checkIndex
-}
 
 export const KeywordChallengeStepContent = ({
     step,
@@ -89,7 +61,7 @@ export const KeywordChallengeStepContent = ({
                 <button
                     type="button"
                     onClick={() => {
-                        const errorIndex = checkAnswer(
+                        const errorIndex = checkKeyword(
                             inputValue.toLowerCase(),
                             step.pronounciation,
                         )
