@@ -8,10 +8,31 @@ type CharacterQuizChoiceStepContentProps = {
     step: CharacterQuizChoiceStep
 } & BaseStepProps
 
+const Answer = {
+    None: "None",
+    Correct: "Correct",
+    Incorrect: "Incorrect",
+}
+
+type Choice = (typeof Answer)[keyof typeof Answer]
+
 export const CharacterQuizChoiceStepContent = ({
     step,
+    onStepComplete,
 }: CharacterQuizChoiceStepContentProps) => {
-    const [selectedChoice, setSelectedChoice] = useState<string | null>(null)
+    const [answer, setAnswer] = useState<Choice>(Answer.None)
+
+    const handleSubmit = (choice: string) => {
+        const isCorrect = choice === step.correctChoice
+        setAnswer(isCorrect ? Answer.Correct : Answer.Incorrect)
+
+        if (isCorrect) {
+            setTimeout(() => {
+                setAnswer(Answer.None)
+                onStepComplete?.()
+            }, 500)
+        }
+    }
 
     return (
         <div className="flex flex-col mt-8">
@@ -23,22 +44,15 @@ export const CharacterQuizChoiceStepContent = ({
                         type="button"
                         className="w-16"
                         onClick={() => {
-                            setSelectedChoice(choice)
+                            handleSubmit(choice)
                         }}
+                        disabled={answer === Answer.Correct}
                     >
                         {choice}
                     </Button>
                 ))}
             </div>
-            {selectedChoice && (
-                <div>
-                    {selectedChoice === step.correctChoice ? (
-                        <Button type="submit">Correct! Go Next</Button>
-                    ) : (
-                        <p>Try again!</p>
-                    )}
-                </div>
-            )}
+            {answer === Answer.Incorrect && <p>Try again!</p>}
         </div>
     )
 }
