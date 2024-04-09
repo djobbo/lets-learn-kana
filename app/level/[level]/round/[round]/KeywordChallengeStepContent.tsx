@@ -50,7 +50,7 @@ export const KeywordChallengeStepContent = ({
                     value={inputValue}
                     onChange={(e) => {
                         setHasAnswered(false)
-                        setInputValue(e.target.value)
+                        setInputValue(e.target.value.toLowerCase())
                     }}
                     className="border border-gray-300 rounded-md p-2"
                     disabled={isReadyToGoNext}
@@ -72,7 +72,7 @@ export const KeywordChallengeStepContent = ({
                     type="button"
                     onClick={() => {
                         const errorIndex = checkAnswer(
-                            inputValue,
+                            inputValue.toLowerCase(),
                             step.pronounciation,
                         )
                         setErrorIndex(errorIndex)
