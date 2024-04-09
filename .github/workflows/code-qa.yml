@@ -1,0 +1,30 @@
+name: Code QA
+on: [push]
+jobs:
+    analyze:
+        name: Analyze
+        runs-on: ubuntu-latest
+        strategy:
+            fail-fast: false
+            matrix:
+                include:
+                    - name: Lint
+                      action: pnpm lint
+                    - name: Typecheck
+                      action: pnpm ts:check
+                    - name: Deadcode
+                      action: pnpm deadcode
+        steps:
+            - uses: actions/checkout@v3
+            - uses: pnpm/action-setup@v2
+              with:
+                  version: 8.5.0
+            - uses: actions/setup-node@v2
+              with:
+                  node-version: 18
+                  cache: "pnpm"
+                  cache-dependency-path: pnpm-lock.yaml
+            - name: ${{ matrix.name }}
+              run: |
+                  pnpm ci
+                  ${{ matrix.action }}

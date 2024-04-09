@@ -5,7 +5,7 @@ import { KeywordChallengeStepContent } from "./KeywordChallengeStepContent"
 import { observer } from "mobx-react-lite"
 import { useLevelStore } from "./LevelStoreProvider"
 
-export const StepContent = observer(function StepContent() {
+const StepContent = observer(function StepContent() {
     const { step } = useLevelStore()
 
     switch (step.type) {

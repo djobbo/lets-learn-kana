@@ -24,19 +24,19 @@ export type KeywordChallengeStep = {
     pronounciation: string[][] // ex: つち -> [["tsu", "tu"], ["chi", "ti"]] (mulitple romanization methods)
 }
 
-export type Step =
+type Step =
     | InfoStep
     | LearnCharacterStep
     | CharacterQuizChoiceStep
     | KeywordChallengeStep
 
-export type Round = {
+type Round = {
     id: string
     title: string
     steps: Step[]
 }
 
-export type Level = {
+type Level = {
     id: string
     title: string
     description: string
