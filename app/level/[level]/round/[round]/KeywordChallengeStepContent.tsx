@@ -1,6 +1,6 @@
 import { type KeywordChallengeStep } from "@/data/levels"
 import { BaseStepProps } from "./Step"
-import { useState } from "react"
+import { useMemo, useState } from "react"
 import { Button } from "@/components/Button"
 
 type KeywordChallengeStepContentProps = {
@@ -15,11 +15,17 @@ const checkAnswer = (
     let checkIndex = 0
     for (let i = 0; i < pronounciation.length; i++) {
         for (let j = 0; j < pronounciation[i].length; j++) {
-            if (inputValue.slice(checkIndex).startsWith(pronounciation[i][j])) {
-                checkIndex += pronounciation[i][j].length
-            } else {
+            const rest = inputValue.slice(checkIndex)
+
+            if (rest.length === 0) {
                 return checkIndex
             }
+
+            if (!rest.startsWith(pronounciation[i][j])) {
+                return checkIndex
+            }
+
+            checkIndex += pronounciation[i][j].length
         }
     }
 
@@ -30,7 +36,6 @@ const checkAnswer = (
     return checkIndex
 }
 
-// TODO: case when the input is shorter than the answer
 export const KeywordChallengeStepContent = ({
     step,
 }: KeywordChallengeStepContentProps) => {
@@ -41,6 +46,18 @@ export const KeywordChallengeStepContent = ({
     const isReadyToSubmit = inputValue.length > 0
     const isReadyToGoNext = hasAnswered && errorIndex === -1
 
+    const maxInputLength = useMemo(
+        () =>
+            Math.max(
+                step.pronounciation.reduce(
+                    (acc, curr) => acc + Math.max(...curr.map((c) => c.length)),
+                    0,
+                ),
+                12,
+            ),
+        [step.pronounciation],
+    )
+
     return (
         <div className="flex flex-col gap-2">
             <h2>{step.keyword}</h2>
@@ -48,6 +65,7 @@ export const KeywordChallengeStepContent = ({
                 <input
                     type="text"
                     value={inputValue}
+                    maxLength={maxInputLength}
                     onChange={(e) => {
                         setHasAnswered(false)
                         setInputValue(e.target.value.toLowerCase())
@@ -56,10 +74,10 @@ export const KeywordChallengeStepContent = ({
                     disabled={isReadyToGoNext}
                 />
                 {hasAnswered && errorIndex !== -1 && (
-                    <p className="absolute top-0 pointer-events-none p-2">
+                    <p className="border border-transparent absolute top-0 pointer-events-none p-2">
                         {inputValue.slice(0, errorIndex)}
                         <span className="text-accent">
-                            {inputValue[errorIndex]}
+                            {inputValue[errorIndex] ?? "?"}
                         </span>
                         {inputValue.slice(errorIndex + 1)}
                     </p>

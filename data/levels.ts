@@ -53,38 +53,38 @@ export const levels: Level[] = [
                 id: "round-1",
                 title: "First steps into the world of hiragana.",
                 steps: [
-                    {
-                        type: "info",
-                        title: "Welcome to Hiragana 1",
-                        description:
-                            "This is the first set of hiragana characters. You will be presented with a series of challenges to help you learn and remember them. Good luck!",
-                    },
-                    {
-                        type: "kana_learn",
-                        character: "あ",
-                        pronounciation: "a",
-                        description:
-                            "This is the character あ. It is pronounced as 'a'. It is part of the hiragana set.",
-                    },
-                    {
-                        type: "kana_learn",
-                        character: "い",
-                        pronounciation: "i",
-                        description:
-                            "This is the character い. It is pronounced as 'i'. It is part of the hiragana set.",
-                    },
-                    {
-                        type: "kana_quiz_choice",
-                        character: "あ",
-                        choices: ["u", "i", "o", "a"],
-                        correctChoice: "a",
-                    },
-                    {
-                        type: "kana_quiz_choice",
-                        character: "い",
-                        choices: ["i", "u", "e", "o"],
-                        correctChoice: "i",
-                    },
+                    // {
+                    //     type: "info",
+                    //     title: "Welcome to Hiragana 1",
+                    //     description:
+                    //         "This is the first set of hiragana characters. You will be presented with a series of challenges to help you learn and remember them. Good luck!",
+                    // },
+                    // {
+                    //     type: "kana_learn",
+                    //     character: "あ",
+                    //     pronounciation: "a",
+                    //     description:
+                    //         "This is the character あ. It is pronounced as 'a'. It is part of the hiragana set.",
+                    // },
+                    // {
+                    //     type: "kana_learn",
+                    //     character: "い",
+                    //     pronounciation: "i",
+                    //     description:
+                    //         "This is the character い. It is pronounced as 'i'. It is part of the hiragana set.",
+                    // },
+                    // {
+                    //     type: "kana_quiz_choice",
+                    //     character: "あ",
+                    //     choices: ["u", "i", "o", "a"],
+                    //     correctChoice: "a",
+                    // },
+                    // {
+                    //     type: "kana_quiz_choice",
+                    //     character: "い",
+                    //     choices: ["i", "u", "e", "o"],
+                    //     correctChoice: "i",
+                    // },
                     {
                         type: "keyword_challenge",
                         keyword: "あい",

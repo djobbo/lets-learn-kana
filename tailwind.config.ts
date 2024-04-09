@@ -8,6 +8,7 @@ const config: Config = {
     ],
     theme: {
         colors: {
+            transparent: "transparent",
             bg: "#F6F6F6",
             card: "#FFFFFF",
             text: "#1A032F",
