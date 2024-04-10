@@ -1,6 +1,6 @@
 "use client"
 
-import { useLevelStore } from "./LevelStoreProvider"
+import { useLevelStore } from "@/store/LevelStore"
 import { observer } from "mobx-react-lite"
 import { Step } from "./Step"
 

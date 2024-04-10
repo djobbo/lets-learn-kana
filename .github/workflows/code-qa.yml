@@ -14,14 +14,16 @@ jobs:
                       action: pnpm ts:check
                     - name: Deadcode
                       action: pnpm deadcode
+                    - name: Test
+                      action: pnpm test
         steps:
             - uses: actions/checkout@v3
             - uses: pnpm/action-setup@v2
               with:
-                  version: 8.5.0
+                  version: 8.15.6
             - uses: actions/setup-node@v2
               with:
-                  node-version: 18
+                  node-version: 20
                   cache: "pnpm"
                   cache-dependency-path: pnpm-lock.yaml
             - name: ${{ matrix.name }}

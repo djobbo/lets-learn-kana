@@ -3,7 +3,7 @@ import { InfoStepContent } from "./InfoStepContent"
 import { CharacterQuizChoiceStepContent } from "./CharacterQuizChoiceStepContent"
 import { KeywordChallengeStepContent } from "./KeywordChallengeStepContent"
 import { observer } from "mobx-react-lite"
-import { useLevelStore } from "./LevelStoreProvider"
+import { useLevelStore } from "@/store/LevelStore"
 import { AnimatePresence } from "framer-motion"
 import { StepType } from "@/data/levels"
 

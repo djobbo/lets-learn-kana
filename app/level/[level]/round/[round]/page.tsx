@@ -2,7 +2,7 @@ import z from "zod"
 import { levels } from "@/data/levels"
 import { RedirectType, redirect } from "next/navigation"
 import { Round } from "./Round"
-import { LevelStoreProvider } from "./LevelStoreProvider"
+import { LevelStoreProvider } from "@/store/LevelStore"
 
 const paramsSchema = z.object({
     level: z.number({ coerce: true }).int().catch(1),

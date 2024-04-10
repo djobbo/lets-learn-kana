@@ -2,7 +2,7 @@ import { type CharacterQuizChoiceStep } from "@/data/levels"
 import { useState } from "react"
 import { Button } from "@/components/Button"
 import { CharacterDisplay } from "@/components/CharacterDisplay"
-import { useLevelStore } from "./LevelStoreProvider"
+import { useLevelStore } from "@/store/LevelStore"
 
 type CharacterQuizChoiceStepContentProps = {
     step: CharacterQuizChoiceStep
