@@ -1,7 +1,7 @@
 import { type KeywordChallengeStep } from "@/data/levels"
 import { useMemo, useState } from "react"
 import { Button } from "@/components/Button"
-import { checkKeyword } from "@/util/checkKeyword"
+import { checkPronounciation } from "@/util/checkPronounciation"
 
 type KeywordChallengeStepContentProps = {
     step: KeywordChallengeStep
@@ -60,7 +60,7 @@ export const KeywordChallenge = ({
                 <button
                     type="button"
                     onClick={() => {
-                        const errorIndex = checkKeyword(
+                        const errorIndex = checkPronounciation(
                             inputValue.toLowerCase(),
                             step.pronounciation,
                         )
