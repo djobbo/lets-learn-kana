@@ -4,19 +4,36 @@ import { CharacterQuizChoiceStepContent } from "./CharacterQuizChoiceStepContent
 import { KeywordChallengeStepContent } from "./KeywordChallengeStepContent"
 import { observer } from "mobx-react-lite"
 import { useLevelStore } from "./LevelStoreProvider"
+import { AnimatePresence } from "framer-motion"
+import { StepType } from "@/data/levels"
 
 const StepContent = observer(function StepContent() {
     const { step } = useLevelStore()
 
     switch (step.type) {
-        case "info":
-            return <InfoStepContent step={step} />
-        case "kana_learn":
-            return <LearnCharacterStepContent step={step} />
-        case "kana_quiz_choice":
-            return <CharacterQuizChoiceStepContent step={step} />
-        case "keyword_challenge":
-            return <KeywordChallengeStepContent step={step} />
+        case StepType.INFO:
+            return <InfoStepContent step={step} key={StepType.INFO} />
+        case StepType.KANA_LEARN:
+            return (
+                <LearnCharacterStepContent
+                    step={step}
+                    key={StepType.KANA_LEARN}
+                />
+            )
+        case StepType.KANA_QUIZ_CHOICE:
+            return (
+                <CharacterQuizChoiceStepContent
+                    step={step}
+                    key={StepType.KANA_QUIZ_CHOICE}
+                />
+            )
+        case StepType.KEYWORD_CHALLENGE:
+            return (
+                <KeywordChallengeStepContent
+                    step={step}
+                    key={StepType.KEYWORD_CHALLENGE}
+                />
+            )
         default:
             return null
     }
@@ -27,7 +44,9 @@ export const Step = () => {
 
     return (
         <form onSubmit={() => nextStep()}>
-            <StepContent />
+            <AnimatePresence mode="wait">
+                <StepContent />
+            </AnimatePresence>
         </form>
     )
 }

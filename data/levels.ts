@@ -1,25 +1,32 @@
+export const StepType = {
+    INFO: "info",
+    KANA_LEARN: "kana_learn",
+    KANA_QUIZ_CHOICE: "kana_quiz_choice",
+    KEYWORD_CHALLENGE: "keyword_challenge",
+} as const
+
 export type InfoStep = {
-    type: "info"
+    type: typeof StepType.INFO
     title: string
     description: string
 }
 
 export type LearnCharacterStep = {
-    type: "kana_learn"
+    type: typeof StepType.KANA_LEARN
     character: string
     pronounciation: string
     description: string
 }
 
 export type CharacterQuizChoiceStep = {
-    type: "kana_quiz_choice"
+    type: typeof StepType.KANA_QUIZ_CHOICE
     character: string
     choices: [string, string, string, string]
     correctChoice: string
 }
 
 export type KeywordChallengeStep = {
-    type: "keyword_challenge"
+    type: typeof StepType.KEYWORD_CHALLENGE
     keyword: string
     pronounciation: string[][] // ex: つち -> [["tsu", "tu"], ["chi", "ti"]] (mulitple romanization methods)
 }
@@ -54,39 +61,39 @@ export const levels: Level[] = [
                 title: "First steps into the world of hiragana.",
                 steps: [
                     {
-                        type: "info",
+                        type: StepType.INFO,
                         title: "Welcome to Hiragana 1",
                         description:
                             "This is the first set of hiragana characters. You will be presented with a series of challenges to help you learn and remember them. Good luck!",
                     },
                     {
-                        type: "kana_learn",
+                        type: StepType.KANA_LEARN,
                         character: "あ",
                         pronounciation: "a",
                         description:
                             "This is the character あ. It is pronounced as 'a'. It is part of the hiragana set.",
                     },
                     {
-                        type: "kana_learn",
+                        type: StepType.KANA_LEARN,
                         character: "い",
                         pronounciation: "i",
                         description:
                             "This is the character い. It is pronounced as 'i'. It is part of the hiragana set.",
                     },
                     {
-                        type: "kana_quiz_choice",
+                        type: StepType.KANA_QUIZ_CHOICE,
                         character: "あ",
                         choices: ["u", "i", "o", "a"],
                         correctChoice: "a",
                     },
                     {
-                        type: "kana_quiz_choice",
+                        type: StepType.KANA_QUIZ_CHOICE,
                         character: "い",
                         choices: ["i", "u", "e", "o"],
                         correctChoice: "i",
                     },
                     {
-                        type: "keyword_challenge",
+                        type: StepType.KEYWORD_CHALLENGE,
                         keyword: "あい",
                         pronounciation: [["a"], ["i"]],
                     },
@@ -97,62 +104,62 @@ export const levels: Level[] = [
                 title: "Learn the second set of hiragana characters.",
                 steps: [
                     {
-                        type: "info",
+                        type: StepType.INFO,
                         title: "Welcome to Hiragana 1",
                         description:
                             "This is the second set of hiragana characters. You will be presented with a series of challenges to help you learn and remember them. Good luck!",
                     },
                     {
-                        type: "kana_learn",
+                        type: StepType.KANA_LEARN,
                         character: "う",
                         pronounciation: "u",
                         description:
                             "This is the character う. It is pronounced as 'u'. It is part of the hiragana set.",
                     },
                     {
-                        type: "kana_learn",
+                        type: StepType.KANA_LEARN,
                         character: "え",
                         pronounciation: "e",
                         description:
                             "This is the character え. It is pronounced as 'e'. It is part of the hiragana set.",
                     },
                     {
-                        type: "kana_learn",
+                        type: StepType.KANA_LEARN,
                         character: "お",
                         pronounciation: "o",
                         description:
                             "This is the character お. It is pronounced as 'o'. It is part of the hiragana set. It is similar to the character あ (a), so be careful not to mix them up!",
                     },
                     {
-                        type: "kana_quiz_choice",
+                        type: StepType.KANA_QUIZ_CHOICE,
                         character: "え",
                         choices: ["i", "u", "e", "o"],
                         correctChoice: "e",
                     },
                     {
-                        type: "kana_quiz_choice",
+                        type: StepType.KANA_QUIZ_CHOICE,
                         character: "う",
                         choices: ["u", "i", "o", "a"],
                         correctChoice: "u",
                     },
                     {
-                        type: "kana_quiz_choice",
+                        type: StepType.KANA_QUIZ_CHOICE,
                         character: "お",
                         choices: ["i", "u", "e", "o"],
                         correctChoice: "o",
                     },
                     {
-                        type: "keyword_challenge",
+                        type: StepType.KEYWORD_CHALLENGE,
                         keyword: "うえ",
                         pronounciation: [["u"], ["e"]],
                     },
                     {
-                        type: "keyword_challenge",
+                        type: StepType.KEYWORD_CHALLENGE,
                         keyword: "おお",
                         pronounciation: [["o"], ["o"]],
                     },
                     {
-                        type: "keyword_challenge",
+                        type: StepType.KEYWORD_CHALLENGE,
                         keyword: "あおい",
                         pronounciation: [["a"], ["o"], ["i"]],
                     },
