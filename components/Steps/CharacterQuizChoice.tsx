@@ -16,7 +16,7 @@ const Answer = {
 
 type Choice = (typeof Answer)[keyof typeof Answer]
 
-export const CharacterQuizChoiceStepContent = ({
+export const CharacterQuizChoice = ({
     step,
 }: CharacterQuizChoiceStepContentProps) => {
     const { nextStep } = useLevelStore()

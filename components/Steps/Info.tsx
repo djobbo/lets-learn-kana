@@ -5,7 +5,7 @@ type InfoStepContentProps = {
     step: InfoStep
 }
 
-export const InfoStepContent = ({ step }: InfoStepContentProps) => {
+export const Info = ({ step }: InfoStepContentProps) => {
     return (
         <div className="flex flex-col gap-2">
             <h2 className="text-xl font-bold">{step.title}</h2>

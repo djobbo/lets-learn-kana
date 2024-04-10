@@ -7,7 +7,7 @@ type KeywordChallengeStepContentProps = {
     step: KeywordChallengeStep
 }
 
-export const KeywordChallengeStepContent = ({
+export const KeywordChallenge = ({
     step,
 }: KeywordChallengeStepContentProps) => {
     const [inputValue, setInputValue] = useState<string>("")

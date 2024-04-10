@@ -34,6 +34,11 @@ const LevelStore = types
             return this.round.steps[self.stepIndex]
         },
     }))
+    .views((self) => ({
+        get uniqueStepKey() {
+            return `${self.levelIndex}-${self.roundIndex}-${self.stepIndex}`
+        },
+    }))
     .actions((self) => ({
         nextStep() {
             if (self.stepIndex >= self.round.steps.length - 1) return

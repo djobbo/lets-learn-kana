@@ -1,12 +1,12 @@
 import { renderWithContext } from "@/test-utils/renderWithContext"
-import { KeywordChallengeStepContent } from "./KeywordChallengeStepContent"
+import { KeywordChallenge } from "./KeywordChallenge"
 import { StepType } from "@/data/levels"
 
 describe("KeywordChallengeStepContent", () => {
     it("should render successfully", () => {
         expect(() => {
             renderWithContext(
-                <KeywordChallengeStepContent
+                <KeywordChallenge
                     step={{
                         type: StepType.KEYWORD_CHALLENGE,
                         keyword: "うえ",
