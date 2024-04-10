@@ -3,23 +3,17 @@ export const checkKeyword = (
     pronounciation: string[][],
 ): number => {
     let checkIndex = 0
-    let ok = true
-    for (let i = 0; i < pronounciation.length; i++) {
+    let ok = pronounciation.every((p) => {
         const rest = inputValue.slice(checkIndex)
-        for (let j = 0; j < pronounciation[i].length; j++) {
-            if (rest.length !== 0 && rest.startsWith(pronounciation[i][j])) {
-                checkIndex += pronounciation[i][j].length
-                ok = true
-                break
-            }
+        const found = p.find((p) => rest.startsWith(p))
 
-            ok = false
+        if (!found) {
+            return false
         }
-    }
 
-    if (ok && checkIndex === inputValue.length) {
-        return -1
-    }
+        checkIndex += found.length
+        return true
+    })
 
-    return checkIndex
+    return ok && checkIndex === inputValue.length ? -1 : checkIndex
 }

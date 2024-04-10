@@ -17,6 +17,10 @@ describe("Check Keyword", () => {
 
     describe("should return the index of the error if the keyword is wrong", () => {
         test("wrong character", () => {
+            expect(checkKeyword("ai", [["i"], ["a"]])).toBe(0)
+            expect(checkKeyword("ai", [["i"], ["i"]])).toBe(0)
+            expect(checkKeyword("ia", [["i"], ["i"]])).toBe(1)
+
             expect(checkKeyword("aoi", [["a"], ["o"], ["i"]])).toBe(-1)
             expect(checkKeyword("eoi", [["a"], ["o"], ["i"]])).toBe(0)
             expect(checkKeyword("aei", [["a"], ["o"], ["i"]])).toBe(1)
