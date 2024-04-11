@@ -1,4 +1,5 @@
 # Let's learn Kana!
+![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/djobbo/lets-learn-kana/code-qa.yml)
 
 ## Getting Started
 

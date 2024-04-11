@@ -16,6 +16,8 @@ jobs:
                       action: pnpm deadcode
                     - name: Test
                       action: pnpm test
+                    - name: Build
+                      action: pnpm build
         steps:
             - uses: actions/checkout@v4
             - uses: pnpm/action-setup@v3
