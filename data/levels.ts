@@ -1,3 +1,5 @@
+import { Kana, kana } from "@/data/kana"
+
 export const StepType = {
     INFO: "info",
     KANA_LEARN: "kana_learn",
@@ -13,22 +15,19 @@ export type InfoStep = {
 
 export type LearnCharacterStep = {
     type: typeof StepType.KANA_LEARN
-    character: string
-    pronounciation: string
+    character: Kana
     description: string
 }
 
 export type CharacterQuizChoiceStep = {
     type: typeof StepType.KANA_QUIZ_CHOICE
-    character: string
-    choices: [string, string, string, string]
-    correctChoice: string
+    character: Kana
+    choices: [Kana, Kana, Kana, Kana]
 }
 
 export type KeywordChallengeStep = {
     type: typeof StepType.KEYWORD_CHALLENGE
-    keyword: string
-    pronounciation: string[][] // ex: つち -> [["tsu", "tu"], ["chi", "ti"]] (mulitple romanization methods)
+    keyword: Kana[]
 }
 
 type Step =
@@ -69,33 +68,29 @@ export const levels: Level[] = [
                     {
                         type: StepType.KANA_LEARN,
                         character: "あ",
-                        pronounciation: "a",
                         description:
                             "This is the character あ. It is pronounced as 'a'. It is part of the hiragana set.",
                     },
                     {
                         type: StepType.KANA_LEARN,
                         character: "い",
-                        pronounciation: "i",
                         description:
                             "This is the character い. It is pronounced as 'i'. It is part of the hiragana set.",
                     },
                     {
                         type: StepType.KANA_QUIZ_CHOICE,
-                        character: "あ",
-                        choices: ["u", "i", "o", "a"],
-                        correctChoice: "a",
+                        character: kana.あ,
+                        choices: [kana.う, kana.い, kana.お, kana.あ],
                     },
                     {
                         type: StepType.KANA_QUIZ_CHOICE,
-                        character: "い",
-                        choices: ["i", "u", "e", "o"],
-                        correctChoice: "i",
+                        character: kana.い,
+                        choices: [kana.い, kana.う, kana.え, kana.お],
                     },
                     {
                         type: StepType.KEYWORD_CHALLENGE,
-                        keyword: "あい",
-                        pronounciation: [["a"], ["i"]],
+                        // keyword: "あい",
+                        keyword: [kana.あ, kana.い],
                     },
                 ],
             },
@@ -111,57 +106,48 @@ export const levels: Level[] = [
                     },
                     {
                         type: StepType.KANA_LEARN,
-                        character: "う",
-                        pronounciation: "u",
+                        character: kana.う,
                         description:
                             "This is the character う. It is pronounced as 'u'. It is part of the hiragana set.",
                     },
                     {
                         type: StepType.KANA_LEARN,
-                        character: "え",
-                        pronounciation: "e",
+                        character: kana.え,
                         description:
                             "This is the character え. It is pronounced as 'e'. It is part of the hiragana set.",
                     },
                     {
                         type: StepType.KANA_LEARN,
-                        character: "お",
-                        pronounciation: "o",
+                        character: kana.お,
                         description:
                             "This is the character お. It is pronounced as 'o'. It is part of the hiragana set. It is similar to the character あ (a), so be careful not to mix them up!",
                     },
                     {
                         type: StepType.KANA_QUIZ_CHOICE,
-                        character: "え",
-                        choices: ["i", "u", "e", "o"],
-                        correctChoice: "e",
+                        character: kana.え,
+                        choices: [kana.い, kana.う, kana.え, kana.お],
                     },
                     {
                         type: StepType.KANA_QUIZ_CHOICE,
-                        character: "う",
-                        choices: ["u", "i", "o", "a"],
-                        correctChoice: "u",
+                        character: kana.う,
+                        choices: [kana.う, kana.い, kana.お, kana.あ],
                     },
                     {
                         type: StepType.KANA_QUIZ_CHOICE,
-                        character: "お",
-                        choices: ["i", "u", "e", "o"],
-                        correctChoice: "o",
+                        character: kana.お,
+                        choices: [kana.い, kana.う, kana.え, kana.お],
                     },
                     {
                         type: StepType.KEYWORD_CHALLENGE,
-                        keyword: "うえ",
-                        pronounciation: [["u"], ["e"]],
+                        keyword: [kana.う, kana.え],
                     },
                     {
                         type: StepType.KEYWORD_CHALLENGE,
-                        keyword: "おお",
-                        pronounciation: [["o"], ["o"]],
+                        keyword: [kana.お, kana.お],
                     },
                     {
                         type: StepType.KEYWORD_CHALLENGE,
-                        keyword: "あおい",
-                        pronounciation: [["a"], ["o"], ["i"]],
+                        keyword: [kana.あ, kana.お, kana.い],
                     },
                 ],
             },

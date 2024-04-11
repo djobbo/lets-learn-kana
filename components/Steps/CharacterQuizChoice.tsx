@@ -3,6 +3,7 @@ import { useState } from "react"
 import { Button } from "@/components/Button"
 import { CharacterDisplay } from "@/components/CharacterDisplay"
 import { useLevelStore } from "@/store/LevelStore"
+import { Kana, romaji } from "@/data/kana"
 
 type CharacterQuizChoiceStepContentProps = Readonly<{
     step: CharacterQuizChoiceStep
@@ -22,8 +23,8 @@ export const CharacterQuizChoice = ({
     const { nextStep } = useLevelStore()
     const [answer, setAnswer] = useState<Choice>(Answer.None)
 
-    const handleSubmit = (choice: string) => {
-        const isCorrect = choice === step.correctChoice
+    const handleSubmit = (choice: Kana) => {
+        const isCorrect = choice === step.character
         setAnswer(isCorrect ? Answer.Correct : Answer.Incorrect)
 
         if (isCorrect) {
@@ -38,19 +39,22 @@ export const CharacterQuizChoice = ({
         <div className="flex flex-col mt-8">
             <CharacterDisplay character={step.character} />
             <div className="flex justify-between p-4 gap-2">
-                {step.choices.map((choice, choiceIndex) => (
-                    <Button
-                        key={choiceIndex}
-                        type="button"
-                        className="w-16"
-                        onClick={() => {
-                            handleSubmit(choice)
-                        }}
-                        disabled={answer === Answer.Correct}
-                    >
-                        {choice}
-                    </Button>
-                ))}
+                {step.choices.map((character) => {
+                    const pronounciation = romaji[character][0]
+                    return (
+                        <Button
+                            key={character}
+                            type="button"
+                            className="w-16"
+                            onClick={() => {
+                                handleSubmit(character)
+                            }}
+                            disabled={answer === Answer.Correct}
+                        >
+                            {pronounciation}
+                        </Button>
+                    )
+                })}
             </div>
             {answer === Answer.Incorrect && <p>Try again!</p>}
         </div>

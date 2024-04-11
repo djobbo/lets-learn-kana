@@ -1,6 +1,7 @@
 import { renderWithContext } from "@/test-utils/renderWithContext"
 import { KeywordChallenge } from "./KeywordChallenge"
 import { StepType } from "@/data/levels"
+import { kana } from "@/data/kana"
 
 describe("KeywordChallengeStepContent", () => {
     it("should render successfully", () => {
@@ -9,8 +10,7 @@ describe("KeywordChallengeStepContent", () => {
                 <KeywordChallenge
                     step={{
                         type: StepType.KEYWORD_CHALLENGE,
-                        keyword: "うえ",
-                        pronounciation: [["u"], ["e"]],
+                        keyword: [kana.う, kana.え],
                     }}
                 />,
             )

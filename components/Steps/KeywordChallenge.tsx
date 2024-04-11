@@ -2,6 +2,7 @@ import { type KeywordChallengeStep } from "@/data/levels"
 import { useMemo, useState } from "react"
 import { Button } from "@/components/Button"
 import { checkPronounciation } from "@/util/checkPronounciation"
+import { romaji } from "@/data/kana"
 
 type KeywordChallengeStepContentProps = Readonly<{
     step: KeywordChallengeStep
@@ -17,17 +18,12 @@ export const KeywordChallenge = ({
     const isReadyToSubmit = inputValue.length > 0
     const isReadyToGoNext = hasAnswered && errorIndex === -1
 
-    const maxInputLength = useMemo(
-        () =>
-            Math.max(
-                step.pronounciation.reduce(
-                    (acc, curr) => acc + Math.max(...curr.map((c) => c.length)),
-                    0,
-                ),
-                12,
-            ),
-        [step.pronounciation],
-    )
+    const maxInputLength = useMemo(() => {
+        const pronounciationLengths = step.keyword
+            .map((k) => romaji[k].map((c) => c.length))
+            .flat()
+        return Math.max(...pronounciationLengths, 12)
+    }, [step.keyword])
 
     return (
         <div className="flex flex-col gap-2">
@@ -62,7 +58,8 @@ export const KeywordChallenge = ({
                     onClick={() => {
                         const errorIndex = checkPronounciation(
                             inputValue.toLowerCase(),
-                            step.pronounciation,
+                            // TODO: add to model when adding levels/rounds/steps to mobx
+                            step.keyword.map((k) => romaji[k]),
                         )
                         setErrorIndex(errorIndex)
                         setHasAnswered(true)
