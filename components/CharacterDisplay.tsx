@@ -1,9 +1,9 @@
 import { AnimatePresence, motion } from "framer-motion"
 
-type CharacterDisplayProps = {
+type CharacterDisplayProps = Readonly<{
     character: string
     pronounciation?: string
-}
+}>
 
 export const CharacterDisplay = ({
     character,

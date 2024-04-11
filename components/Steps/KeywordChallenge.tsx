@@ -3,9 +3,9 @@ import { useMemo, useState } from "react"
 import { Button } from "@/components/Button"
 import { checkPronounciation } from "@/util/checkPronounciation"
 
-type KeywordChallengeStepContentProps = {
+type KeywordChallengeStepContentProps = Readonly<{
     step: KeywordChallengeStep
-}
+}>
 
 export const KeywordChallenge = ({
     step,

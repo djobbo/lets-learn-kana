@@ -9,11 +9,11 @@ export const metadata: Metadata = {
     description: "Zenji is a platform for learning Japanese",
 }
 
-export default function RootLayout({
-    children,
-}: Readonly<{
+type RootLayoutProps = Readonly<{
     children: React.ReactNode
-}>) {
+}>
+
+export default function RootLayout({ children }: RootLayoutProps) {
     return (
         <html lang="en">
             <body className={poppins.className}>{children}</body>

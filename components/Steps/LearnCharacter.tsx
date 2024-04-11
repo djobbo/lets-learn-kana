@@ -2,9 +2,9 @@ import { type LearnCharacterStep } from "@/data/levels"
 import { Button } from "@/components/Button"
 import { CharacterDisplay } from "@/components/CharacterDisplay"
 
-type LearnCharacterStepContentProps = {
+type LearnCharacterStepContentProps = Readonly<{
     step: LearnCharacterStep
-}
+}>
 
 export const LearnCharacter = ({ step }: LearnCharacterStepContentProps) => {
     return (

@@ -1,9 +1,9 @@
 import { type InfoStep } from "@/data/levels"
 import { Button } from "@/components/Button"
 
-type InfoStepContentProps = {
+type InfoStepContentProps = Readonly<{
     step: InfoStep
-}
+}>
 
 export const Info = ({ step }: InfoStepContentProps) => {
     return (

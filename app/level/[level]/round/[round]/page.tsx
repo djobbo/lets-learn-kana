@@ -9,12 +9,9 @@ const paramsSchema = z.object({
     round: z.number({ coerce: true }).int().catch(1),
 })
 
-type LevelRoundPageProps = {
-    params: {
-        level: string
-        round: string
-    }
-}
+type LevelRoundPageProps = Readonly<{
+    params: unknown
+}>
 
 export default function LevelRoundPage({ params }: LevelRoundPageProps) {
     const parsedParams = paramsSchema.safeParse(params)

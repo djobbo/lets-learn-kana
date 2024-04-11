@@ -4,15 +4,15 @@ import { Button } from "@/components/Button"
 import { CharacterDisplay } from "@/components/CharacterDisplay"
 import { useLevelStore } from "@/store/LevelStore"
 
-type CharacterQuizChoiceStepContentProps = {
+type CharacterQuizChoiceStepContentProps = Readonly<{
     step: CharacterQuizChoiceStep
-}
+}>
 
 const Answer = {
     None: "None",
     Correct: "Correct",
     Incorrect: "Incorrect",
-}
+} as const
 
 type Choice = (typeof Answer)[keyof typeof Answer]
 

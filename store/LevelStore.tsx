@@ -61,9 +61,11 @@ export const useLevelStore = () => {
     return store
 }
 
-type LevelStoreProviderProps = {
-    children: ReactNode
-} & SnapshotOut<typeof LevelStore>
+type LevelStoreProviderProps = Readonly<
+    {
+        children: ReactNode
+    } & SnapshotOut<typeof LevelStore>
+>
 
 export const LevelStoreProvider = ({
     children,
