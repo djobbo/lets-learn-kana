@@ -11,6 +11,7 @@ describe("KeywordChallengeStepContent", () => {
                     step={{
                         type: StepType.KEYWORD_CHALLENGE,
                         keyword: [kana.う, kana.え],
+                        meanings: ["above", "up"],
                     }}
                 />,
             )

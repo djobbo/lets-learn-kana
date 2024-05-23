@@ -36,27 +36,31 @@ export const CharacterQuizChoice = ({
     }
 
     return (
-        <div className="flex flex-col mt-8">
-            <CharacterDisplay character={step.character} />
-            <div className="flex justify-between p-4 gap-2">
-                {step.choices.map((character) => {
-                    const pronounciation = romaji[character][0]
-                    return (
-                        <Button
-                            key={character}
-                            type="button"
-                            className="w-16"
-                            onClick={() => {
-                                handleSubmit(character)
-                            }}
-                            disabled={answer === Answer.Correct}
-                        >
-                            {pronounciation}
-                        </Button>
-                    )
-                })}
+        <div className="flex-1 flex flex-col justify-between">
+            <div className="flex-1 flex justify-center items-center">
+                <CharacterDisplay character={step.character} />
             </div>
-            {answer === Answer.Incorrect && <p>Try again!</p>}
+            <div>
+                {answer === Answer.Incorrect && <p>Try again!</p>}
+                <div className="grid grid-cols-2 justify-items-center items-center p-4 gap-2">
+                    {step.choices.map((character) => {
+                        const pronounciation = romaji[character][0]
+                        return (
+                            <Button
+                                key={character}
+                                type="button"
+                                className="w-32 h-12 text-xl"
+                                onClick={() => {
+                                    handleSubmit(character)
+                                }}
+                                disabled={answer === Answer.Correct}
+                            >
+                                {pronounciation}
+                            </Button>
+                        )
+                    })}
+                </div>
+            </div>
         </div>
     )
 }

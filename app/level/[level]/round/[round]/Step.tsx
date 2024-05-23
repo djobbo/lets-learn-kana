@@ -28,7 +28,13 @@ export const Step = () => {
     const { nextStep, uniqueStepKey } = useLevelStore()
 
     return (
-        <form onSubmit={() => nextStep()}>
+        <form
+            className="flex-1 flex flex-col"
+            onSubmit={(e) => {
+                e.preventDefault()
+                nextStep()
+            }}
+        >
             <AnimatePresence mode="wait">
                 <StepContent key={uniqueStepKey} />
             </AnimatePresence>

@@ -8,10 +8,8 @@ export const Round = observer(function Round() {
     const { round, stepIndex } = useLevelStore()
 
     return (
-        <div>
-            <h1 className="mt-8 text-center text-xl font-semibold">
-                {round.title}
-            </h1>
+        <div className="flex-1 flex flex-col mt-2">
+            <h3 className="text-center text-textSecondary">{round.title}</h3>
             <Step key={stepIndex} />
         </div>
     )

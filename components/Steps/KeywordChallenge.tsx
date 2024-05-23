@@ -26,49 +26,53 @@ export const KeywordChallenge = ({
     }, [step.keyword])
 
     return (
-        <div className="flex flex-col gap-2">
-            <h2>{step.keyword}</h2>
-            <div className="relative">
-                <input
-                    type="text"
-                    value={inputValue}
-                    maxLength={maxInputLength}
-                    onChange={(e) => {
-                        setHasAnswered(false)
-                        setInputValue(e.target.value.toLowerCase())
-                    }}
-                    className="border border-gray-300 rounded-md p-2"
-                    disabled={isReadyToGoNext}
-                />
-                {hasAnswered && errorIndex !== -1 && (
-                    <p className="border border-transparent absolute top-0 pointer-events-none p-2">
-                        {inputValue.slice(0, errorIndex)}
-                        <span className="text-accent">
-                            {inputValue[errorIndex] ?? "?"}
-                        </span>
-                        {inputValue.slice(errorIndex + 1)}
-                    </p>
+        <div className="flex-1 flex flex-col justify-between">
+            <h2 className="flex-1 flex justify-center items-center text-6xl font-bold">
+                {step.keyword}
+            </h2>
+            <div>
+                <div className="relative">
+                    <input
+                        type="text"
+                        value={inputValue}
+                        maxLength={maxInputLength}
+                        onChange={(e) => {
+                            setHasAnswered(false)
+                            setInputValue(e.target.value.toLowerCase())
+                        }}
+                        className="border border-gray-300 rounded-md p-2"
+                        disabled={isReadyToGoNext}
+                    />
+                    {hasAnswered && errorIndex !== -1 && (
+                        <p className="border border-transparent absolute top-0 pointer-events-none p-2">
+                            {inputValue.slice(0, errorIndex)}
+                            <span className="text-accent">
+                                {inputValue[errorIndex] ?? "?"}
+                            </span>
+                            {inputValue.slice(errorIndex + 1)}
+                        </p>
+                    )}
+                </div>
+                {isReadyToGoNext ? (
+                    <Button type="submit">Correct! Continue</Button>
+                ) : (
+                    <Button
+                        type="button"
+                        onClick={() => {
+                            const errorIndex = checkPronounciation(
+                                inputValue.toLowerCase(),
+                                // TODO: add to model when adding levels/rounds/steps to mobx
+                                step.keyword.map((k) => romaji[k]),
+                            )
+                            setErrorIndex(errorIndex)
+                            setHasAnswered(true)
+                        }}
+                        disabled={!isReadyToSubmit}
+                    >
+                        Submit
+                    </Button>
                 )}
             </div>
-            {isReadyToGoNext ? (
-                <Button type="submit">Correct! Go Next</Button>
-            ) : (
-                <button
-                    type="button"
-                    onClick={() => {
-                        const errorIndex = checkPronounciation(
-                            inputValue.toLowerCase(),
-                            // TODO: add to model when adding levels/rounds/steps to mobx
-                            step.keyword.map((k) => romaji[k]),
-                        )
-                        setErrorIndex(errorIndex)
-                        setHasAnswered(true)
-                    }}
-                    disabled={!isReadyToSubmit}
-                >
-                    Submit
-                </button>
-            )}
         </div>
     )
 }

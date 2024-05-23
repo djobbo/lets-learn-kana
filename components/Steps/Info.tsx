@@ -7,10 +7,12 @@ type InfoStepContentProps = Readonly<{
 
 export const Info = ({ step }: InfoStepContentProps) => {
     return (
-        <div className="flex flex-col gap-2">
-            <h2 className="text-xl font-bold">{step.title}</h2>
-            <p className="mt-2">{step.description}</p>
-            <Button type="submit">Next</Button>
+        <div className="h-full flex flex-col justify-between">
+            <div>
+                <h2 className="text-xl font-bold">{step.title}</h2>
+                <p className="mt-2">{step.description}</p>
+            </div>
+            <Button type="submit">Continue</Button>
         </div>
     )
 }

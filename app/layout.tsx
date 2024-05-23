@@ -1,8 +1,14 @@
 import type { Metadata } from "next"
-import { Poppins } from "next/font/google"
+import { Poppins as FontSans } from "next/font/google"
+import { cn } from "@/util/cn"
 import "./globals.css"
+import { type ReactNode } from "react"
 
-const poppins = Poppins({ subsets: ["latin"], weight: ["400", "600", "700"] })
+const fontSans = FontSans({
+    subsets: ["latin"],
+    weight: ["400", "600", "700"],
+    variable: "--font-sans",
+})
 
 export const metadata: Metadata = {
     title: "Zenji",
@@ -10,13 +16,20 @@ export const metadata: Metadata = {
 }
 
 type RootLayoutProps = Readonly<{
-    children: React.ReactNode
+    children: ReactNode
 }>
 
 export default function RootLayout({ children }: RootLayoutProps) {
     return (
-        <html lang="en">
-            <body className={poppins.className}>{children}</body>
+        <html lang="en" className="h-full">
+            <body
+                className={cn(
+                    "h-full min-h-dvh font-sans antialiased",
+                    fontSans.variable,
+                )}
+            >
+                {children}
+            </body>
         </html>
     )
 }
